@@ -11,9 +11,14 @@ def getJSON(URL):
     assert response.status_code == 200
     return response.json()
 
+def printASCII(string):
+    ASCIIstring = string.encode('ascii', 'ignore')
+    print(ASCIIstring)
+
 def main():
     data = getJSON(URL)
-    print(data['batchcomplete'])
+    content = data['query']['pages'][0]['revisions'][0]['content']
+    printASCII(content)
 
 if __name__ == '__main__':
     main()
