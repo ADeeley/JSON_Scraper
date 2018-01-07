@@ -8,10 +8,12 @@ Pulls the Json from the Wikipedia API (Currently hardcoded with bestsellers.)
 """
 def getJSON(URL):
     response = requests.get(URL)
-    print('Status: ', response.status_code)
-    print('Encoding: ', response.encoding)
+    assert response.status_code == 200
     return response.json()
 
-data = getJSON(URL)
+def main():
+    data = getJSON(URL)
+    print(data['batchcomplete'])
 
-print(data['batchcomplete'])
+if __name__ == '__main__':
+    main()
